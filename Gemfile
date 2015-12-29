@@ -12,8 +12,12 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+# Simple forms
+gem 'simple_form'
+# Bootstrap layouts
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
+
+gem 'ace-rails-ap'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -31,11 +35,15 @@ end
 
 group :development do
   gem 'sqlite3'
+
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor'  
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password

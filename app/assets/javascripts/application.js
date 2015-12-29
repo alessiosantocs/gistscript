@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+//= require ace-rails-ap
+//= require ace/theme-github
+//= require ace/mode-ruby

@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @script.name %>.rb
+</h1>
+
+<p>
+  <%= link_to 'Run script now', script_run_path(@script) %>
+</p>
+
+<%= link_to 'Edit', edit_script_path(@script) %> |
+<%= link_to 'Back', scripts_path %>
