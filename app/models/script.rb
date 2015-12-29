@@ -9,6 +9,6 @@ class Script < ActiveRecord::Base
   def randomize_id
     begin
       self.id = SecureRandom.random_number(1_000_000)
-    end while Calendar.where(id: self.id).exists?
+    end while Script.where(id: self.id).exists?
   end
 end
