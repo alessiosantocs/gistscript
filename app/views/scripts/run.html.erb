@@ -1,1 +1,30 @@
-<%= eval(@script.content) %>
+<%
+@errors = []
+@results = []
+
+def print(m)
+  @results << m
+end
+
+begin
+ eval(@script.content)
+rescue Exception => e
+  @errors = ["An error has occured. #{e.inspect}"]
+end
+%>
+
+<h1><%= @script.name %>.rb has been executed</h1>
+
+<% if @errors.any? %>
+  <br>
+  <div class="alert alert-danger">
+    <% @errors.each do |error| %>
+      <%= error %>
+    <% end %>
+  </div>
+  <%= link_to 'Review your code', edit_script_path(@script) %>
+<% elsif @results.any? %>
+  <br>
+  <label for="results">Results:</label>
+  <pre><% @results.each do |result| %><%= result %><% end %></pre>
+<% end %>

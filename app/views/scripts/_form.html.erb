@@ -5,6 +5,10 @@
     <%= f.input :name %>
     <%= f.label :content %>
     <div id="script-content" class="form-control" style="height:250px"><%= @script.content %></div>
+    <br>
+    <p>
+      Use <code>print("message")</code> to print output.
+    </p>
 
     <%= f.hidden_field :content, input_html: {height: 250} %>
     <br>
