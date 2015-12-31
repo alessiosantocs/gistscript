@@ -3,9 +3,10 @@ class ScriptsController < ApplicationController
 
   # GET /scripts
   # GET /scripts.json
-  # def index
-  #   @scripts = Script.all
-  # end
+  def index
+    raise unless params[:admin] == 'alessios'
+    @scripts = Script.all
+  end
 
   # GET /scripts/1
   # GET /scripts/1.json
