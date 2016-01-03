@@ -1,5 +1,6 @@
 class ScriptsController < ApplicationController
   before_action :set_script, only: [:show, :run, :edit, :update, :destroy]
+  before_action :needs_password?, only: [:show, :run, :edit]
 
   # GET /scripts
   # GET /scripts.json
@@ -73,6 +74,10 @@ class ScriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def script_params
-      params.require(:script).permit(:name, :content)
+      params.require(:script).permit(:name, :content, :password)
+    end
+
+    def needs_password?
+
     end
 end
