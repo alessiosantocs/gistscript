@@ -15,6 +15,7 @@ class ScriptsController < ApplicationController
   end
 
   def run
+    raise
   end
 
   # GET /scripts/new
