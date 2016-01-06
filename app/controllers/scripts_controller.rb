@@ -53,7 +53,11 @@ class ScriptsController < ApplicationController
     begin
       @b = SafeBinding.new
       @bb = @b.get_binding
-      eval(@script.content, @bb)
+
+      timeout_in_seconds = 5
+      Timeout::timeout(timeout_in_seconds) do
+        eval(@script.content, @bb)
+      end
     rescue Exception => e
       @b.errors = ["An error has occured. #{e.inspect}"]
     end
