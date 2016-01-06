@@ -1,12 +1,11 @@
 <h1>Listing scripts</h1>
 
-<table>
+<table class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
+      <th>id</th>
       <th>Name</th>
       <th>Content</th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -14,15 +13,27 @@
   <tbody>
     <% @scripts.each do |script| %>
       <tr>
-        <td><%= script.name %></td>
+        <td width="6%"><%= link_to script.id, edit_script_path(script) %></td>
+        <td width="15%"><%= link_to "#{script.name}.rb", edit_script_path(script) %></td>
         <td><%= script.content %></td>
-        <td><%= link_to 'Show', script %></td>
-        <td><%= link_to 'Edit', edit_script_path(script) %></td>
-        <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td width="10%" class="actions">
+          <%= link_to 'Run', script_run_path(script), class: 'btn btn-success btn-xs' %>
+          <%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<style>
+  .actions{
+    opacity: 0;
+  }
+
+  tr:hover .actions{
+    opacity: 1;
+  }
+</style>
 
 <br>
 
