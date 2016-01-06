@@ -1,3 +1,37 @@
+class SafeBinding
+  def initialize
+    @errors = []
+    @results = []
+  end
+
+  def results
+    @results
+  end
+
+  def errors
+    @errors
+  end
+
+  def errors=(array)
+    @errors = array
+  end
+
+  # Sending emails (don't forget to .deliver)
+  def mail(sender, to, message)
+    DefaultMailer.notification(sender, to, message)
+  end
+
+  # Used to print stuff on debugger
+  def print(m)
+    @results << m
+  end
+  alias_method :puts, :print
+
+  def get_binding
+    return binding()
+  end
+end
+
 class ScriptsController < ApplicationController
   before_action :set_script, only: [:show, :run, :edit, :update, :destroy]
   before_action :needs_password?, only: [:show, :run, :edit]
@@ -5,7 +39,7 @@ class ScriptsController < ApplicationController
   # GET /scripts
   # GET /scripts.json
   def index
-    raise unless params[:admin] == 'alessios'
+    redirect_to new_script_path unless params[:admin] == 'alessios'
     @scripts = Script.all
   end
 
@@ -15,7 +49,15 @@ class ScriptsController < ApplicationController
   end
 
   def run
-    # raise 
+
+    begin
+      @b = SafeBinding.new
+      @bb = @b.get_binding
+      eval(@script.content, @bb)
+    rescue Exception => e
+      @b.errors = ["An error has occured. #{e.inspect}"]
+    end
+
   end
 
   # GET /scripts/new

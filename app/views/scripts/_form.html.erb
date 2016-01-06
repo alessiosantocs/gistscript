@@ -4,13 +4,30 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.label :content %>
-    <div id="script-content" class="form-control" style="height:250px"><%= @script.content %></div>
+    <% if @script.content.present? %>
+      <div id="script-content" class="form-control" style="height:400px"><%= @script.content %></div>
+    <% else %>
+<div id="script-content" class="form-control" style="height:400px">
+# Welcome to GistScript! Write a Ruby (Rails) script and have it run on an url.
+# @author  = "Alessio Santo"
+# @email   = "alessio@gistscript.com"
+
+# Use this box to write ruby code as you normally do:
+#
+# - Print stuff to the output console like this:
+# print("hi there pal!")
+# - Send a notification email to yourself or someone like this:
+# mail("Alessio", "mark@facebook.com", "Hey, I'm using GistScript!").deliver
+#
+# Have fun and let me know if there's anything I can add or do better!
+</div>
+    <% end %>
     <br>
     <p>
       Use <code>print("message")</code> to print output.
     </p>
 
-    <%= f.hidden_field :content, input_html: {height: 250} %>
+    <%= f.hidden_field :content %>
     <br>
     <script>
     var editor = ace.edit("script-content");
@@ -24,6 +41,6 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn-primary" %>
   </div>
 <% end %>
