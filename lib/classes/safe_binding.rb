@@ -1,6 +1,8 @@
 class SafeBinding
   module Gistscript
     class Application
+      class Script
+      end
     end
   end
 
