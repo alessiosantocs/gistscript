@@ -20,6 +20,10 @@ module Gistscript
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.eager_load_paths += %W(
+      #{config.root}/lib/classes
+    )
+
     config.action_mailer.delivery_method = :postmark
     config.action_mailer.postmark_settings = { :api_token => "8bf4e61e-24c2-4402-847b-742c2f2fed56" }
   end
