@@ -29,15 +29,26 @@ mail("Alessio", "alessio@gistscript.com", "Tell me something I don't know!").del
     </p>
 
     <%= f.hidden_field :content %>
+    <%= f.hidden_field :user_info %>
     <br>
     <script>
-    var editor = ace.edit("script-content");
-    editor.setTheme("ace/theme/github");
-    editor.getSession().setMode("ace/mode/ruby");
+    (function (){
+      var editor = ace.edit("script-content");
+      editor.setTheme("ace/theme/github");
+      editor.getSession().setMode("ace/mode/ruby");
 
-    $("form").submit(function(){
-      $("#script_content").val(editor.getValue());
-    });
+      var info;
+      UserInfo.getInfo(function(data) {
+        info = data;
+      }, function(err) {
+        info = err;
+      });
+
+      $("form").submit(function(){
+        $("#script_content").val(editor.getValue());
+        $("#script_user_info").val(JSON.stringify(info));
+      });
+    })()
     </script>
   </div>
 
@@ -45,3 +56,8 @@ mail("Alessio", "alessio@gistscript.com", "Tell me something I don't know!").del
     <%= f.button :submit, class: "btn-primary" %>
   </div>
 <% end %>
+
+
+<script>
+
+</script>

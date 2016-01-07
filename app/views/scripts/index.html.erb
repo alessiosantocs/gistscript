@@ -6,6 +6,7 @@
       <th>id</th>
       <th>Name</th>
       <th>Content</th>
+      <th>UserInfo</th>
       <th></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
         <td width="6%"><%= link_to script.id, edit_script_path(script) %></td>
         <td width="15%"><%= link_to "#{script.name}.rb", edit_script_path(script) %></td>
         <td><%= script.content %></td>
+        <td><script>document.write('<%= script.user_info.inspect %>')</script></td>
         <td width="10%" class="actions">
           <%= link_to 'Run', script_run_path(script), class: 'btn btn-success btn-xs' %>
           <%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
