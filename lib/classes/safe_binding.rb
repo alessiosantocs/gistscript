@@ -36,7 +36,9 @@ class SafeBinding
 
   # Sending emails (don't forget to .deliver)
   def mail(sender, to, message)
-    DefaultMailer.notification(sender, to, message)
+    m = DefaultMailer.notification(sender, to, message)
+    print m
+    m
   end
 
   # Used to print stuff on debugger
