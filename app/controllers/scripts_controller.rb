@@ -16,6 +16,14 @@ class SafeBinding
     @errors = array
   end
 
+  def params
+    @params
+  end
+
+  def set_params(p)
+    @params = p
+  end
+
   # Sending emails (don't forget to .deliver)
   def mail(sender, to, message)
     DefaultMailer.notification(sender, to, message)
@@ -53,6 +61,8 @@ class ScriptsController < ApplicationController
     begin
       @b = SafeBinding.new
       @bb = @b.get_binding
+
+      @b.set_params params
 
       timeout_in_seconds = 5
       Timeout::timeout(timeout_in_seconds) do
