@@ -22,7 +22,7 @@ class ScriptsController < ApplicationController
 
       @b.set_params params
 
-      timeout_in_seconds = 5
+      timeout_in_seconds = 10
       Timeout::timeout(timeout_in_seconds) do
         eval(@script.content, @bb)
       end
