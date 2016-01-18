@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107103455) do
+ActiveRecord::Schema.define(version: 20160118092631) do
 
   create_table "scripts", force: true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160107103455) do
     t.datetime "updated_at"
     t.string   "password"
     t.text     "user_info"
+    t.string   "schedule"
   end
 
 end

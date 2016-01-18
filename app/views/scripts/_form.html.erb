@@ -52,6 +52,8 @@ mail("Alessio", "alessio@gistscript.com", "Tell me something I don't know!").del
     </script>
   </div>
 
+  <%= f.input :schedule, collection: Script::SCHEDULES, prompt: false %>
+
   <div class="form-actions">
     <%= f.button :submit, class: "btn-primary" %>
   </div>
