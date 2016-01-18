@@ -1,6 +1,6 @@
 class Script < ActiveRecord::Base
   # SCHEDULES AVAILABLE CONFIGURATIONS
-  SCHEDULES = [:not_scheduled, :every_ten_minutes, :every_hour, :every_day]
+  SCHEDULES = [:not_scheduled, :every_hour]
 
   validates :name, presence: true
   validates :content, presence: true
